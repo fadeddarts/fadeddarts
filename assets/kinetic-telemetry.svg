@@ -88,7 +88,7 @@
 <line x1="0" y1="36" x2="840" y2="36" stroke="#262626" stroke-width="1"/>
 <line x1="520" y1="36" x2="520" y2="320" stroke="#262626" stroke-width="1"/>
 <text x="14" y="24" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">KINETIC TELEMETRY &amp; ARCHITECTURAL SYNTHESIZER</text>
-<text x="620" y="24" class="mono" font-size="9" font-weight="600" fill="#2B6CFF">SRC GITHUB · 2026-11-23 01:25 UTC</text>
+<text x="620" y="24" class="mono" font-size="9" font-weight="600" fill="#2B6CFF">SRC GITHUB · 2026-11-23 01:27 UTC</text>
 <text x="16" y="54" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">01  ISOMETRIC COMMIT SKYLINE — 52 WEEKS</text>
 <path d="M48,268 L422.40000000000003,195.2 L450.40000000000003,181.2 L76,254 Z" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
 <polygon points="48.0,268.0 53.5,263.5 53.5,257.5 48.0,262.0" fill="#1A1A1A" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
@@ -163,9 +163,9 @@
 <polygon points="213.6,235.8 219.1,231.3 219.1,225.3 213.6,229.8" fill="#1A1A1A" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
 <polygon points="213.6,235.8 213.6,229.8 210.575,228.0 210.575,234.0" fill="#141414" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
 <polygon class="" style="animation-delay:1.32s" points="213.6,229.8 219.1,225.3 216.075,223.5 210.575,228.0" fill="#262626" stroke="#262626" stroke-width="0.7"/>
-<polygon points="220.8,234.4 226.3,229.9 226.3,209.15 220.8,213.65" fill="#223054" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
-<polygon points="220.8,234.4 220.8,213.65 217.775,211.85 217.775,232.6" fill="#19223A" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
-<polygon class="" style="animation-delay:0.00s" points="220.8,213.65 226.3,209.15 223.275,207.35 217.775,211.85" fill="#243F7E" stroke="#262626" stroke-width="0.7"/>
+<polygon points="220.8,234.4 226.3,229.9 226.3,223.9 220.8,228.4" fill="#1A1A1A" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
+<polygon points="220.8,234.4 220.8,228.4 217.775,226.6 217.775,232.6" fill="#141414" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
+<polygon class="" style="animation-delay:0.00s" points="220.8,228.4 226.3,223.9 223.275,222.1 217.775,226.6" fill="#262626" stroke="#262626" stroke-width="0.7"/>
 <polygon points="228.0,233.0 233.5,228.5 233.5,222.5 228.0,227.0" fill="#1A1A1A" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
 <polygon points="228.0,233.0 228.0,227.0 224.975,225.2 224.975,231.2" fill="#141414" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
 <polygon class="" style="animation-delay:0.12s" points="228.0,227.0 233.5,222.5 230.475,220.7 224.975,225.2" fill="#262626" stroke="#262626" stroke-width="0.7"/>
@@ -190,15 +190,15 @@
 <polygon points="278.4,223.2 283.9,218.7 283.9,143.86666666666665 278.4,148.36666666666665" fill="#1E52D8" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
 <polygon points="278.4,223.2 278.4,148.36666666666665 275.375,146.56666666666663 275.375,221.39999999999998" fill="#17388F" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
 <polygon class="tower-pulse" style="animation-delay:0.96s" points="278.4,148.36666666666665 283.9,143.86666666666665 280.875,142.06666666666663 275.375,146.56666666666663" fill="#2158E1" stroke="#262626" stroke-width="0.7"/>
-<polygon points="285.6,221.8 291.1,217.3 291.1,98.21666666666667 285.6,102.71666666666667" fill="#2969FB" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
-<polygon points="285.6,221.8 285.6,102.71666666666667 282.57500000000005,100.91666666666667 282.57500000000005,220.0" fill="#1E47A6" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
-<polygon class="tower-pulse" style="animation-delay:1.08s" points="285.6,102.71666666666667 291.1,98.21666666666667 288.07500000000005,96.41666666666667 282.57500000000005,100.91666666666667" fill="#2969FC" stroke="#2B6CFF" stroke-width="0.7"/>
-<polygon points="292.8,220.4 298.3,215.9 298.3,180.4 292.8,184.9" fill="#1F3A82" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
-<polygon points="292.8,220.4 292.8,184.9 289.77500000000003,183.1 289.77500000000003,218.6" fill="#172958" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
-<polygon class="" style="animation-delay:1.20s" points="292.8,184.9 298.3,180.4 295.27500000000003,178.6 289.77500000000003,183.1" fill="#2246A1" stroke="#262626" stroke-width="0.7"/>
-<polygon points="300.0,219.0 305.5,214.5 305.5,188.83333333333334 300.0,193.33333333333334" fill="#213363" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
-<polygon points="300.0,219.0 300.0,193.33333333333334 296.975,191.53333333333333 296.975,217.2" fill="#182443" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
-<polygon class="" style="animation-delay:1.32s" points="300.0,193.33333333333334 305.5,188.83333333333334 302.475,187.03333333333333 296.975,191.53333333333333" fill="#23418A" stroke="#262626" stroke-width="0.7"/>
+<polygon points="285.6,221.8 291.1,217.3 291.1,127.71666666666667 285.6,132.21666666666667" fill="#2159E3" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
+<polygon points="285.6,221.8 285.6,132.21666666666667 282.57500000000005,130.41666666666666 282.57500000000005,220.0" fill="#183D97" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
+<polygon class="tower-pulse" style="animation-delay:1.08s" points="285.6,132.21666666666667 291.1,127.71666666666667 288.07500000000005,125.91666666666667 282.57500000000005,130.41666666666666" fill="#235DEA" stroke="#2B6CFF" stroke-width="0.7"/>
+<polygon points="292.8,220.4 298.3,215.9 298.3,200.06666666666666 292.8,204.56666666666666" fill="#232C44" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
+<polygon points="292.8,220.4 292.8,204.56666666666666 289.77500000000003,202.76666666666665 289.77500000000003,218.6" fill="#1A202F" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
+<polygon class="" style="animation-delay:1.20s" points="292.8,204.56666666666666 298.3,200.06666666666666 295.27500000000003,198.26666666666665 289.77500000000003,202.76666666666665" fill="#253C72" stroke="#262626" stroke-width="0.7"/>
+<polygon points="300.0,219.0 305.5,214.5 305.5,179.0 300.0,183.5" fill="#1F3A82" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
+<polygon points="300.0,219.0 300.0,183.5 296.975,181.7 296.975,217.2" fill="#172958" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
+<polygon class="" style="animation-delay:1.32s" points="300.0,183.5 305.5,179.0 302.475,177.2 296.975,181.7" fill="#2246A1" stroke="#262626" stroke-width="0.7"/>
 <polygon points="307.2,217.6 312.7,213.1 312.7,207.1 307.2,211.6" fill="#1A1A1A" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
 <polygon points="307.2,217.6 307.2,211.6 304.175,209.79999999999998 304.175,215.79999999999998" fill="#141414" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
 <polygon class="" style="animation-delay:0.00s" points="307.2,211.6 312.7,207.1 309.675,205.29999999999998 304.175,209.79999999999998" fill="#262626" stroke="#262626" stroke-width="0.7"/>
@@ -244,9 +244,9 @@
 <polygon points="408.0,198.0 413.5,193.5 413.5,167.83333333333334 408.0,172.33333333333334" fill="#213363" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
 <polygon points="408.0,198.0 408.0,172.33333333333334 404.975,170.53333333333333 404.975,196.2" fill="#182443" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
 <polygon class="" style="animation-delay:0.24s" points="408.0,172.33333333333334 413.5,167.83333333333334 410.475,166.03333333333333 404.975,170.53333333333333" fill="#23418A" stroke="#262626" stroke-width="0.7"/>
-<polygon points="415.2,196.60000000000002 420.7,192.10000000000002 420.7,166.43333333333337 415.2,170.93333333333337" fill="#213363" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
-<polygon points="415.2,196.60000000000002 415.2,170.93333333333337 412.175,169.13333333333335 412.175,194.8" fill="#182443" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
-<polygon class="" style="animation-delay:0.36s" points="415.2,170.93333333333337 420.7,166.43333333333337 417.675,164.63333333333335 412.175,169.13333333333335" fill="#23418A" stroke="#262626" stroke-width="0.7"/>
+<polygon points="415.2,196.60000000000002 420.7,192.10000000000002 420.7,161.51666666666668 415.2,166.01666666666668" fill="#203672" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
+<polygon points="415.2,196.60000000000002 415.2,166.01666666666668 412.175,164.21666666666667 412.175,194.8" fill="#18264D" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
+<polygon class="" style="animation-delay:0.36s" points="415.2,166.01666666666668 420.7,161.51666666666668 417.675,159.71666666666667 412.175,164.21666666666667" fill="#224395" stroke="#262626" stroke-width="0.7"/>
 <g class="scan-beam">
   <rect x="48" y="58" width="3" height="210" fill="url(#beamGrad)"/>
   <line x1="49.5" y1="58" x2="49.5" y2="268" stroke="#2B6CFF" stroke-width="1.2" opacity="0.9"/>
@@ -275,11 +275,11 @@
 <text x="680.0" y="202.0" class="mono" font-size="8" fill="#8A8A8E" text-anchor="middle" dominant-baseline="middle">PULL REQUESTS</text>
 <line x1="680" y1="130" x2="622.0" y2="130.0" stroke="#262626" stroke-width="1"/>
 <text x="608.0" y="130.0" class="mono" font-size="8" fill="#8A8A8E" text-anchor="middle" dominant-baseline="middle">STREAK</text>
-<polygon points="680.0,114.5 720.6,130.0 680.0,137.0 672.3,130.0" fill="#2B6CFF" fill-opacity="0.18" stroke="#2B6CFF" stroke-width="1.5"/>
-<circle class="node" style="animation-delay:0.0s" cx="680.0" cy="114.5" r="3.2" fill="#2B6CFF">
+<polygon points="680.0,115.9 709.0,130.0 680.0,137.0 672.3,130.0" fill="#2B6CFF" fill-opacity="0.18" stroke="#2B6CFF" stroke-width="1.5"/>
+<circle class="node" style="animation-delay:0.0s" cx="680.0" cy="115.9" r="3.2" fill="#2B6CFF">
   <animate attributeName="opacity" values="0.5;1;0.5" dur="1.6s" begin="0.0s" repeatCount="indefinite"/>
 </circle>
-<circle class="node" style="animation-delay:0.2s" cx="720.6" cy="130.0" r="3.2" fill="#2B6CFF">
+<circle class="node" style="animation-delay:0.2s" cx="709.0" cy="130.0" r="3.2" fill="#2B6CFF">
   <animate attributeName="opacity" values="0.5;1;0.5" dur="1.6s" begin="0.2s" repeatCount="indefinite"/>
 </circle>
 <circle class="node" style="animation-delay:0.4s" cx="680.0" cy="137.0" r="3.2" fill="#2B6CFF">
@@ -291,9 +291,9 @@
 <line x1="520" y1="198" x2="840" y2="198" stroke="#262626" stroke-width="1"/>
 <text x="536" y="216" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">03  CODE VELOCITY OSCILLOSCOPE</text>
 <rect x="536" y="223.0" width="278" height="54" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path class="wave" d="M540.0,248.0 L545.3,249.6 L550.6,250.7 L555.9,251.0 L561.2,250.4 L566.5,249.1 L571.8,247.5 L577.1,243.4 L582.4,245.1 L587.6,245.1 L592.9,245.9 L598.2,247.3 L603.5,248.9 L608.8,250.3 L614.1,251.0 L619.4,250.8 L624.7,249.8 L630.0,245.6 L635.3,246.6 L640.6,245.4 L645.9,245.0 L651.2,245.4 L656.5,246.7 L661.8,248.3 L667.1,247.2 L672.4,250.8 L677.6,251.0 L682.9,250.3 L688.2,248.9 L693.5,247.3 L698.8,245.9 L704.1,245.1 L709.4,232.9 L714.7,225.9 L720.0,242.3 L725.3,245.7 L730.6,250.4 L735.9,251.0 L741.2,250.7 L746.5,246.9 L751.8,248.0 L757.1,246.4 L762.4,245.3 L767.6,241.5 L772.9,243.8 L778.2,246.9 L783.5,248.5 L788.8,250.0 L794.1,229.9 L799.4,242.2 L804.7,246.6 L810.0,245.2"/>
-<path d="M540.0,248.0 L545.3,249.6 L550.6,250.7 L555.9,251.0 L561.2,250.4 L566.5,249.1 L571.8,247.5 L577.1,243.4 L582.4,245.1 L587.6,245.1 L592.9,245.9 L598.2,247.3 L603.5,248.9 L608.8,250.3 L614.1,251.0 L619.4,250.8 L624.7,249.8 L630.0,245.6 L635.3,246.6 L640.6,245.4 L645.9,245.0 L651.2,245.4 L656.5,246.7 L661.8,248.3 L667.1,247.2 L672.4,250.8 L677.6,251.0 L682.9,250.3 L688.2,248.9 L693.5,247.3 L698.8,245.9 L704.1,245.1 L709.4,232.9 L714.7,225.9 L720.0,242.3 L725.3,245.7 L730.6,250.4 L735.9,251.0 L741.2,250.7 L746.5,246.9 L751.8,248.0 L757.1,246.4 L762.4,245.3 L767.6,241.5 L772.9,243.8 L778.2,246.9 L783.5,248.5 L788.8,250.0 L794.1,229.9 L799.4,242.2 L804.7,246.6 L810.0,245.2" fill="none" stroke="#2B6CFF" stroke-width="1.2" stroke-dasharray="10 7" opacity="0.55">
+<path class="wave" d="M540.0,248.0 L545.3,249.6 L550.6,250.7 L555.9,251.0 L561.2,250.4 L566.5,249.1 L571.8,247.5 L577.1,243.4 L582.4,245.1 L587.6,245.1 L592.9,245.9 L598.2,247.3 L603.5,248.9 L608.8,250.3 L614.1,251.0 L619.4,250.8 L624.7,249.8 L630.0,245.6 L635.3,246.6 L640.6,245.4 L645.9,245.0 L651.2,245.4 L656.5,246.7 L661.8,248.3 L667.1,249.8 L672.4,250.8 L677.6,251.0 L682.9,250.3 L688.2,248.9 L693.5,247.3 L698.8,245.9 L704.1,245.1 L709.4,232.9 L714.7,231.2 L720.0,245.8 L725.3,243.9 L730.6,250.4 L735.9,251.0 L741.2,250.7 L746.5,246.9 L751.8,248.0 L757.1,246.4 L762.4,245.3 L767.6,241.5 L772.9,243.8 L778.2,246.9 L783.5,248.5 L788.8,250.0 L794.1,229.9 L799.4,242.2 L804.7,246.6 L810.0,244.3"/>
+<path d="M540.0,248.0 L545.3,249.6 L550.6,250.7 L555.9,251.0 L561.2,250.4 L566.5,249.1 L571.8,247.5 L577.1,243.4 L582.4,245.1 L587.6,245.1 L592.9,245.9 L598.2,247.3 L603.5,248.9 L608.8,250.3 L614.1,251.0 L619.4,250.8 L624.7,249.8 L630.0,245.6 L635.3,246.6 L640.6,245.4 L645.9,245.0 L651.2,245.4 L656.5,246.7 L661.8,248.3 L667.1,249.8 L672.4,250.8 L677.6,251.0 L682.9,250.3 L688.2,248.9 L693.5,247.3 L698.8,245.9 L704.1,245.1 L709.4,232.9 L714.7,231.2 L720.0,245.8 L725.3,243.9 L730.6,250.4 L735.9,251.0 L741.2,250.7 L746.5,246.9 L751.8,248.0 L757.1,246.4 L762.4,245.3 L767.6,241.5 L772.9,243.8 L778.2,246.9 L783.5,248.5 L788.8,250.0 L794.1,229.9 L799.4,242.2 L804.7,246.6 L810.0,244.3" fill="none" stroke="#2B6CFF" stroke-width="1.2" stroke-dasharray="10 7" opacity="0.55">
   <animate attributeName="stroke-dashoffset" from="0" to="-420" dur="2.2s" repeatCount="indefinite"/>
 </path>
-<text x="540" y="308" class="mono" font-size="9" fill="#8A8A8E">TOTAL_COMMITS <tspan fill="#2B6CFF" font-weight="700">107</tspan>   ACTIVE_STREAK <tspan fill="#2B6CFF" font-weight="700">0d</tspan>   TOP_LANGUAGE <tspan fill="#F4F4F0" font-weight="700">HTML/CSS</tspan></text>
+<text x="540" y="308" class="mono" font-size="9" fill="#8A8A8E">TOTAL_COMMITS <tspan fill="#2B6CFF" font-weight="700">97</tspan>   ACTIVE_STREAK <tspan fill="#2B6CFF" font-weight="700">0d</tspan>   TOP_LANGUAGE <tspan fill="#F4F4F0" font-weight="700">HTML/CSS</tspan></text>
 </svg>

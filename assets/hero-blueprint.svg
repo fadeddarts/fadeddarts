@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="280" viewBox="0 0 1200 280" role="img" >
+<defs>
+  <style><![CDATA[
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .sans { font-family: Inter, Helvetica Neue, Helvetica, Arial, sans-serif; }
+  ]]></style>
+</defs>
+<rect x="0.5" y="0.5" width="1199" height="279" fill="#0A0A0A" stroke="#262626" stroke-width="1"/>
+<line x1="0" y1="48" x2="1200" y2="48" stroke="#262626" stroke-width="1"/>
+<line x1="0" y1="240" x2="1200" y2="240" stroke="#262626" stroke-width="1"/>
+<line x1="160" y1="0" x2="160" y2="280" stroke="#262626" stroke-width="1"/>
+<line x1="980" y1="0" x2="980" y2="280" stroke="#262626" stroke-width="1"/>
+<path d="M4,12 H20 M12,4 V20" stroke="#FFD000" stroke-width="1.5"/>
+<path d="M1180,12 H1196 M1188,4 V20" stroke="#FFD000" stroke-width="1.5"/>
+<path d="M4,268 H20 M12,260 V276" stroke="#FFD000" stroke-width="1.5"/>
+<path d="M1180,268 H1196 M1188,260 V276" stroke="#FFD000" stroke-width="1.5"/>
+<text x="24" y="28" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">DWG 00 — TITLE BLOCK</text>
+<text x="24" y="78" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">SHEET</text>
+<text x="24" y="108" class="mono" font-size="36" font-weight="700" fill="#FFD000">00</text>
+<text x="24" y="140" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">REV</text>
+<text x="24" y="162" class="sans" font-size="18" font-weight="600" fill="#F4F4F0">A</text>
+<text x="24" y="200" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">SCALE</text>
+<text x="24" y="222" class="sans" font-size="14" font-weight="400" fill="#F4F4F0">1 : 1</text>
+<text x="180" y="28" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">SUBJECT / AUTHOR</text>
+<text x="180" y="118" class="sans" font-size="42" font-weight="700" fill="#F4F4F0" letter-spacing="-0.5">Harpuneet Singh</text>
+<text x="180" y="152" class="mono" font-size="16" fill="#FFD000">/fadeddarts</text>
+<text x="180" y="190" class="sans" font-size="15" fill="#8A8A8E">Computer Science @ Toronto Metropolitan University</text>
+<text x="180" y="214" class="sans" font-size="15" fill="#F4F4F0">Full-Stack &amp; Systems Developer</text>
+<g stroke="#FFD000" stroke-width="1" fill="none" opacity="0.9">
+  <rect x="720" y="70" width="120" height="120"/>
+  <line x1="720" y1="70" x2="840" y2="190"/>
+  <line x1="840" y1="70" x2="720" y2="190"/>
+  <circle cx="780" cy="130" r="28"/>
+  <circle cx="780" cy="130" r="8" fill="#FFD000" stroke="none"/>
+  <path d="M740,170 L780,90 L820,170 Z"/>
+</g>
+<text x="1000" y="28" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">STATUS</text>
+<text x="1000" y="78" class="mono" font-size="18" font-weight="700" fill="#FFD000">COMPILING</text>
+<text x="1000" y="110" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">COORD / LOC</text>
+<text x="1000" y="132" class="sans" font-size="13" font-weight="400" fill="#F4F4F0">TORONTO, ON</text>
+<text x="1000" y="164" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">REPOS</text>
+<text x="1000" y="186" class="sans" font-size="18" font-weight="600" fill="#F4F4F0">24</text>
+<text x="1000" y="214" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">YR COMMITS</text>
+<text x="1000" y="236" class="sans" font-size="18" font-weight="600" fill="#F4F4F0">612</text>
+<text x="24" y="264" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">LAST COMPILED  2026-11-23 01:14 UTC</text>
+<text x="1000" y="264" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">SRC  MOCK</text>
+</svg>

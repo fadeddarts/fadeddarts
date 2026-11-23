@@ -1,0 +1,36 @@
+{
+  "compiled_at": "2026-11-23 01:14 UTC",
+  "source": "mock",
+  "contributions_year": 612,
+  "current_streak": 4,
+  "languages": [
+    [
+      "Python",
+      38.0
+    ],
+    [
+      "TypeScript",
+      22.0
+    ],
+    [
+      "JavaScript",
+      16.0
+    ],
+    [
+      "Swift",
+      9.0
+    ],
+    [
+      "HTML/CSS",
+      8.0
+    ],
+    [
+      "C/C++",
+      4.0
+    ],
+    [
+      "Other",
+      3.0
+    ]
+  ]
+}

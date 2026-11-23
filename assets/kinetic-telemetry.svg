@@ -88,7 +88,7 @@
 <line x1="0" y1="36" x2="840" y2="36" stroke="#262626" stroke-width="1"/>
 <line x1="520" y1="36" x2="520" y2="320" stroke="#262626" stroke-width="1"/>
 <text x="14" y="24" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">KINETIC TELEMETRY &amp; ARCHITECTURAL SYNTHESIZER</text>
-<text x="620" y="24" class="mono" font-size="9" font-weight="600" fill="#2B6CFF">SRC GITHUB · 2026-11-23 01:27 UTC</text>
+<text x="620" y="24" class="mono" font-size="9" font-weight="600" fill="#2B6CFF">SRC GITHUB · 2026-11-23 01:33 UTC</text>
 <text x="16" y="54" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">01  ISOMETRIC COMMIT SKYLINE — 52 WEEKS</text>
 <path d="M48,268 L422.40000000000003,195.2 L450.40000000000003,181.2 L76,254 Z" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
 <polygon points="48.0,268.0 53.5,263.5 53.5,257.5 48.0,262.0" fill="#1A1A1A" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
@@ -244,9 +244,9 @@
 <polygon points="408.0,198.0 413.5,193.5 413.5,167.83333333333334 408.0,172.33333333333334" fill="#213363" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
 <polygon points="408.0,198.0 408.0,172.33333333333334 404.975,170.53333333333333 404.975,196.2" fill="#182443" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
 <polygon class="" style="animation-delay:0.24s" points="408.0,172.33333333333334 413.5,167.83333333333334 410.475,166.03333333333333 404.975,170.53333333333333" fill="#23418A" stroke="#262626" stroke-width="0.7"/>
-<polygon points="415.2,196.60000000000002 420.7,192.10000000000002 420.7,161.51666666666668 415.2,166.01666666666668" fill="#203672" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
-<polygon points="415.2,196.60000000000002 415.2,166.01666666666668 412.175,164.21666666666667 412.175,194.8" fill="#18264D" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
-<polygon class="" style="animation-delay:0.36s" points="415.2,166.01666666666668 420.7,161.51666666666668 417.675,159.71666666666667 412.175,164.21666666666667" fill="#224395" stroke="#262626" stroke-width="0.7"/>
+<polygon points="415.2,196.60000000000002 420.7,192.10000000000002 420.7,156.60000000000002 415.2,161.10000000000002" fill="#1F3A82" stroke="#262626" stroke-width="0.6" opacity="0.95"/>
+<polygon points="415.2,196.60000000000002 415.2,161.10000000000002 412.175,159.3 412.175,194.8" fill="#172958" stroke="#262626" stroke-width="0.5" opacity="0.9"/>
+<polygon class="" style="animation-delay:0.36s" points="415.2,161.10000000000002 420.7,156.60000000000002 417.675,154.8 412.175,159.3" fill="#2246A1" stroke="#262626" stroke-width="0.7"/>
 <g class="scan-beam">
   <rect x="48" y="58" width="3" height="210" fill="url(#beamGrad)"/>
   <line x1="49.5" y1="58" x2="49.5" y2="268" stroke="#2B6CFF" stroke-width="1.2" opacity="0.9"/>
@@ -275,8 +275,8 @@
 <text x="680.0" y="202.0" class="mono" font-size="8" fill="#8A8A8E" text-anchor="middle" dominant-baseline="middle">PULL REQUESTS</text>
 <line x1="680" y1="130" x2="622.0" y2="130.0" stroke="#262626" stroke-width="1"/>
 <text x="608.0" y="130.0" class="mono" font-size="8" fill="#8A8A8E" text-anchor="middle" dominant-baseline="middle">STREAK</text>
-<polygon points="680.0,115.9 709.0,130.0 680.0,137.0 672.3,130.0" fill="#2B6CFF" fill-opacity="0.18" stroke="#2B6CFF" stroke-width="1.5"/>
-<circle class="node" style="animation-delay:0.0s" cx="680.0" cy="115.9" r="3.2" fill="#2B6CFF">
+<polygon points="680.0,115.8 709.0,130.0 680.0,137.0 672.3,130.0" fill="#2B6CFF" fill-opacity="0.18" stroke="#2B6CFF" stroke-width="1.5"/>
+<circle class="node" style="animation-delay:0.0s" cx="680.0" cy="115.8" r="3.2" fill="#2B6CFF">
   <animate attributeName="opacity" values="0.5;1;0.5" dur="1.6s" begin="0.0s" repeatCount="indefinite"/>
 </circle>
 <circle class="node" style="animation-delay:0.2s" cx="709.0" cy="130.0" r="3.2" fill="#2B6CFF">
@@ -291,9 +291,9 @@
 <line x1="520" y1="198" x2="840" y2="198" stroke="#262626" stroke-width="1"/>
 <text x="536" y="216" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">03  CODE VELOCITY OSCILLOSCOPE</text>
 <rect x="536" y="223.0" width="278" height="54" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path class="wave" d="M540.0,248.0 L545.3,249.6 L550.6,250.7 L555.9,251.0 L561.2,250.4 L566.5,249.1 L571.8,247.5 L577.1,243.4 L582.4,245.1 L587.6,245.1 L592.9,245.9 L598.2,247.3 L603.5,248.9 L608.8,250.3 L614.1,251.0 L619.4,250.8 L624.7,249.8 L630.0,245.6 L635.3,246.6 L640.6,245.4 L645.9,245.0 L651.2,245.4 L656.5,246.7 L661.8,248.3 L667.1,249.8 L672.4,250.8 L677.6,251.0 L682.9,250.3 L688.2,248.9 L693.5,247.3 L698.8,245.9 L704.1,245.1 L709.4,232.9 L714.7,231.2 L720.0,245.8 L725.3,243.9 L730.6,250.4 L735.9,251.0 L741.2,250.7 L746.5,246.9 L751.8,248.0 L757.1,246.4 L762.4,245.3 L767.6,241.5 L772.9,243.8 L778.2,246.9 L783.5,248.5 L788.8,250.0 L794.1,229.9 L799.4,242.2 L804.7,246.6 L810.0,244.3"/>
-<path d="M540.0,248.0 L545.3,249.6 L550.6,250.7 L555.9,251.0 L561.2,250.4 L566.5,249.1 L571.8,247.5 L577.1,243.4 L582.4,245.1 L587.6,245.1 L592.9,245.9 L598.2,247.3 L603.5,248.9 L608.8,250.3 L614.1,251.0 L619.4,250.8 L624.7,249.8 L630.0,245.6 L635.3,246.6 L640.6,245.4 L645.9,245.0 L651.2,245.4 L656.5,246.7 L661.8,248.3 L667.1,249.8 L672.4,250.8 L677.6,251.0 L682.9,250.3 L688.2,248.9 L693.5,247.3 L698.8,245.9 L704.1,245.1 L709.4,232.9 L714.7,231.2 L720.0,245.8 L725.3,243.9 L730.6,250.4 L735.9,251.0 L741.2,250.7 L746.5,246.9 L751.8,248.0 L757.1,246.4 L762.4,245.3 L767.6,241.5 L772.9,243.8 L778.2,246.9 L783.5,248.5 L788.8,250.0 L794.1,229.9 L799.4,242.2 L804.7,246.6 L810.0,244.3" fill="none" stroke="#2B6CFF" stroke-width="1.2" stroke-dasharray="10 7" opacity="0.55">
+<path class="wave" d="M540.0,248.0 L545.3,249.6 L550.6,250.7 L555.9,251.0 L561.2,250.4 L566.5,249.1 L571.8,247.5 L577.1,243.4 L582.4,245.1 L587.6,245.1 L592.9,245.9 L598.2,247.3 L603.5,248.9 L608.8,250.3 L614.1,251.0 L619.4,250.8 L624.7,249.8 L630.0,245.6 L635.3,246.6 L640.6,245.4 L645.9,245.0 L651.2,245.4 L656.5,246.7 L661.8,248.3 L667.1,249.8 L672.4,250.8 L677.6,251.0 L682.9,250.3 L688.2,248.9 L693.5,247.3 L698.8,245.9 L704.1,245.1 L709.4,232.9 L714.7,231.2 L720.0,245.8 L725.3,243.9 L730.6,250.4 L735.9,251.0 L741.2,250.7 L746.5,246.9 L751.8,248.0 L757.1,246.4 L762.4,245.3 L767.6,241.5 L772.9,243.8 L778.2,246.9 L783.5,248.5 L788.8,250.0 L794.1,229.9 L799.4,242.2 L804.7,246.6 L810.0,243.4"/>
+<path d="M540.0,248.0 L545.3,249.6 L550.6,250.7 L555.9,251.0 L561.2,250.4 L566.5,249.1 L571.8,247.5 L577.1,243.4 L582.4,245.1 L587.6,245.1 L592.9,245.9 L598.2,247.3 L603.5,248.9 L608.8,250.3 L614.1,251.0 L619.4,250.8 L624.7,249.8 L630.0,245.6 L635.3,246.6 L640.6,245.4 L645.9,245.0 L651.2,245.4 L656.5,246.7 L661.8,248.3 L667.1,249.8 L672.4,250.8 L677.6,251.0 L682.9,250.3 L688.2,248.9 L693.5,247.3 L698.8,245.9 L704.1,245.1 L709.4,232.9 L714.7,231.2 L720.0,245.8 L725.3,243.9 L730.6,250.4 L735.9,251.0 L741.2,250.7 L746.5,246.9 L751.8,248.0 L757.1,246.4 L762.4,245.3 L767.6,241.5 L772.9,243.8 L778.2,246.9 L783.5,248.5 L788.8,250.0 L794.1,229.9 L799.4,242.2 L804.7,246.6 L810.0,243.4" fill="none" stroke="#2B6CFF" stroke-width="1.2" stroke-dasharray="10 7" opacity="0.55">
   <animate attributeName="stroke-dashoffset" from="0" to="-420" dur="2.2s" repeatCount="indefinite"/>
 </path>
-<text x="540" y="308" class="mono" font-size="9" fill="#8A8A8E">TOTAL_COMMITS <tspan fill="#2B6CFF" font-weight="700">97</tspan>   ACTIVE_STREAK <tspan fill="#2B6CFF" font-weight="700">0d</tspan>   TOP_LANGUAGE <tspan fill="#F4F4F0" font-weight="700">HTML/CSS</tspan></text>
+<text x="540" y="308" class="mono" font-size="9" fill="#8A8A8E">TOTAL_COMMITS <tspan fill="#2B6CFF" font-weight="700">98</tspan>   ACTIVE_STREAK <tspan fill="#2B6CFF" font-weight="700">0d</tspan>   TOP_LANGUAGE <tspan fill="#F4F4F0" font-weight="700">HTML/CSS</tspan></text>
 </svg>

@@ -1448,7 +1448,7 @@
   <animate attributeName="stroke" values="#262626;#2B6CFF;#262626" dur="6s" begin="5.50s" repeatCount="indefinite"/>
   <animate attributeName="opacity" values="0.75;1;0.75" dur="6s" begin="5.50s" repeatCount="indefinite"/>
 </rect>
-<rect x="813" y="56" width="12" height="12" fill="#1F3A82" stroke="#262626" stroke-width="1">
+<rect x="813" y="56" width="12" height="12" fill="#1D3F99" stroke="#262626" stroke-width="1">
   <animate attributeName="stroke" values="#262626;#2B6CFF;#262626" dur="6s" begin="5.61s" repeatCount="indefinite"/>
   <animate attributeName="opacity" values="0.75;1;0.75" dur="6s" begin="5.61s" repeatCount="indefinite"/>
 </rect>
@@ -1482,5 +1482,5 @@
 <rect x="48" y="52" width="3" height="110" fill="#2B6CFF" opacity="0.35">
   <animate attributeName="x" values="48;825;48" dur="6s" repeatCount="indefinite"/>
 </rect>
-<text x="16" y="192" class="mono" font-size="9" fill="#8A8A8E">TOTAL 97 · STREAK 0d · SRC GITHUB</text>
+<text x="16" y="192" class="mono" font-size="9" fill="#8A8A8E">TOTAL 98 · STREAK 0d · SRC GITHUB</text>
 </svg>

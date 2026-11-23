@@ -1,35 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="220" viewBox="0 0 1100 220" role="img" >
 <defs>
   <style><![CDATA[
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-    .sans { font-family: Inter, Helvetica Neue, Helvetica, Arial, sans-serif; }
+    .mono { font-family: "Noto Sans Mono", "SF Mono", Menlo, Consolas, monospace; }
+    .sans { font-family: "Noto Sans", Montserrat, "Google Sans", "Segoe UI", Helvetica, Arial, sans-serif; }
+    .display { font-family: "Playfair Display", Georgia, "Times New Roman", serif; }
   ]]></style>
 </defs>
 <rect x="0.5" y="0.5" width="1099" height="219" fill="#0A0A0A" stroke="#262626" stroke-width="1"/>
 <text x="20" y="28" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">SHEET 02C — WORKFLOW SCHEMATIC</text>
-<text x="20" y="48" class="mono" font-size="12" font-weight="600" fill="#FFD000">HOW SYSTEMS MOVE FROM INTENT → ARTIFACT</text>
+<text x="20" y="48" class="mono" font-size="12" font-weight="600" fill="#2B6CFF">HOW SYSTEMS MOVE FROM INTENT → ARTIFACT</text>
 <line x1="20" y1="60" x2="1080" y2="60" stroke="#262626" stroke-width="1"/>
 <rect x="78.0" y="100" width="160" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1.5"/>
 <text x="90.0" y="124" class="mono" font-size="10" fill="#8A8A8E">01</text>
 <text x="90.0" y="148" class="sans" font-size="14" font-weight="600" fill="#F4F4F0">SPEC</text>
-<line x1="242.0" y1="136.0" x2="264.0" y2="136.0" stroke="#FFD000" stroke-width="1.5"/>
-<polygon points="264.0,131.0 272.0,136.0 264.0,141.0" fill="#FFD000"/>
+<line x1="242.0" y1="136.0" x2="264.0" y2="136.0" stroke="#2B6CFF" stroke-width="1.5"/>
+<polygon points="264.0,131.0 272.0,136.0 264.0,141.0" fill="#2B6CFF"/>
 <rect x="274.0" y="100" width="160" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1.5"/>
 <text x="286.0" y="124" class="mono" font-size="10" fill="#8A8A8E">02</text>
 <text x="286.0" y="148" class="sans" font-size="14" font-weight="600" fill="#F4F4F0">ISOLATED BRANCH</text>
-<line x1="438.0" y1="136.0" x2="460.0" y2="136.0" stroke="#FFD000" stroke-width="1.5"/>
-<polygon points="460.0,131.0 468.0,136.0 460.0,141.0" fill="#FFD000"/>
+<line x1="438.0" y1="136.0" x2="460.0" y2="136.0" stroke="#2B6CFF" stroke-width="1.5"/>
+<polygon points="460.0,131.0 468.0,136.0 460.0,141.0" fill="#2B6CFF"/>
 <rect x="470.0" y="100" width="160" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1.5"/>
 <text x="482.0" y="124" class="mono" font-size="10" fill="#8A8A8E">03</text>
 <text x="482.0" y="148" class="sans" font-size="14" font-weight="600" fill="#F4F4F0">BUILD</text>
-<line x1="634.0" y1="136.0" x2="656.0" y2="136.0" stroke="#FFD000" stroke-width="1.5"/>
-<polygon points="656.0,131.0 664.0,136.0 656.0,141.0" fill="#FFD000"/>
+<line x1="634.0" y1="136.0" x2="656.0" y2="136.0" stroke="#2B6CFF" stroke-width="1.5"/>
+<polygon points="656.0,131.0 664.0,136.0 656.0,141.0" fill="#2B6CFF"/>
 <rect x="666.0" y="100" width="160" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1.5"/>
 <text x="678.0" y="124" class="mono" font-size="10" fill="#8A8A8E">04</text>
 <text x="678.0" y="148" class="sans" font-size="14" font-weight="600" fill="#F4F4F0">BENCHMARK</text>
-<line x1="830.0" y1="136.0" x2="852.0" y2="136.0" stroke="#FFD000" stroke-width="1.5"/>
-<polygon points="852.0,131.0 860.0,136.0 852.0,141.0" fill="#FFD000"/>
-<rect x="862.0" y="100" width="160" height="72" fill="#1A1A1A" stroke="#FFD000" stroke-width="1.5"/>
+<line x1="830.0" y1="136.0" x2="852.0" y2="136.0" stroke="#2B6CFF" stroke-width="1.5"/>
+<polygon points="852.0,131.0 860.0,136.0 852.0,141.0" fill="#2B6CFF"/>
+<rect x="862.0" y="100" width="160" height="72" fill="#1A1A1A" stroke="#2B6CFF" stroke-width="1.5"/>
 <text x="874.0" y="124" class="mono" font-size="10" fill="#8A8A8E">05</text>
 <text x="874.0" y="148" class="sans" font-size="14" font-weight="600" fill="#F4F4F0">SHIP</text>
 <text x="24" y="202" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">LOOP: FAIL BENCHMARK → RETURN TO SPEC</text>

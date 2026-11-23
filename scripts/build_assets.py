@@ -22,14 +22,19 @@ INK = "#0A0A0A"
 BORDER = "#262626"
 PAPER = "#F4F4F0"
 SLATE = "#8A8A8E"
-GOLD = "#FFD000"
+ACCENT = "#2B6CFF"  # electric signal blue (replaces gold)
+ACCENT_MID = "#1A4ACC"
+ACCENT_DIM = "#142A66"
 DIM = "#1A1A1A"
 
 USERNAME = "fadeddarts"
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "assets"
-FONT = "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
-SANS = "Inter, Helvetica Neue, Helvetica, Arial, sans-serif"
+
+# Common, widely-available stacks (Google Sans ≈ system UI; Playfair for display)
+MONO = '"Noto Sans Mono", "SF Mono", Menlo, Consolas, monospace'
+SANS = '"Noto Sans", Montserrat, "Google Sans", "Segoe UI", Helvetica, Arial, sans-serif'
+DISPLAY = '"Playfair Display", Georgia, "Times New Roman", serif'
 
 # ── SVG helpers ───────────────────────────────────────────────────────────────
 
@@ -49,8 +54,9 @@ def svg_open(w: int, h: int, extra: str = "") -> str:
         f'viewBox="0 0 {w} {h}" role="img" {extra}>\n'
         f"<defs>\n"
         f'  <style><![CDATA[\n'
-        f"    .mono {{ font-family: {FONT}; }}\n"
+        f"    .mono {{ font-family: {MONO}; }}\n"
         f"    .sans {{ font-family: {SANS}; }}\n"
+        f"    .display {{ font-family: {DISPLAY}; }}\n"
         f"  ]]></style>\n"
         f"</defs>\n"
     )
@@ -89,10 +95,10 @@ def paper_text(x: float, y: float, text: str, size: int = 14, weight: str = "400
     )
 
 
-def gold_text(x: float, y: float, text: str, size: int = 12, weight: str = "600") -> str:
+def accent_text(x: float, y: float, text: str, size: int = 12, weight: str = "600") -> str:
     return (
         f'<text x="{x}" y="{y}" class="mono" font-size="{size}" font-weight="{weight}" '
-        f'fill="{GOLD}">{esc(text)}</text>\n'
+        f'fill="{ACCENT}">{esc(text)}</text>\n'
     )
 
 
@@ -104,16 +110,31 @@ def write_svg(name: str, content: str) -> Path:
     return path
 
 
+def lerp_hex(a: str, b: str, t: float) -> str:
+    t = max(0.0, min(1.0, t))
+    ai = [int(a[i : i + 2], 16) for i in (1, 3, 5)]
+    bi = [int(b[i : i + 2], 16) for i in (1, 3, 5)]
+    rgb = [int(ai[i] + (bi[i] - ai[i]) * t) for i in range(3)]
+    return f"#{rgb[0]:02X}{rgb[1]:02X}{rgb[2]:02X}"
+
+
+def intensity_color(count: int, peak: int) -> str:
+    if count <= 0:
+        return DIM
+    t = min(1.0, count / max(1, peak))
+    if t < 0.45:
+        return lerp_hex(BORDER, ACCENT_MID, t / 0.45)
+    return lerp_hex(ACCENT_MID, ACCENT, (t - 0.45) / 0.55)
+
+
 # ── Data layer ───────────────────────────────────────────────────────────────
 
 
 def mock_telemetry() -> dict[str, Any]:
-    """Deterministic mock so local previews work without a token."""
     weeks: list[list[int]] = []
     for w in range(52):
         days = []
         for d in range(7):
-            # Pseudo-activity pattern: denser mid-week, seasonal peaks
             v = ((w * 7 + d) * 17 + 23) % 11
             if d in (0, 6):
                 v = max(0, v - 4)
@@ -128,18 +149,18 @@ def mock_telemetry() -> dict[str, Any]:
         "public_repos": 24,
         "followers": 0,
         "following": 1,
+        "pull_requests": 14,
         "total_commits": 842,
         "current_streak": 4,
         "longest_streak": 18,
         "contributions_year": 612,
         "weeks": weeks,
         "languages": [
-            ("Python", 38.0),
-            ("TypeScript", 22.0),
+            ("TypeScript", 33.0),
+            ("HTML/CSS", 28.0),
             ("JavaScript", 16.0),
-            ("Swift", 9.0),
-            ("HTML/CSS", 8.0),
-            ("C/C++", 4.0),
+            ("Python", 14.0),
+            ("Swift", 6.0),
             ("Other", 3.0),
         ],
         "status": "COMPILING",
@@ -149,7 +170,6 @@ def mock_telemetry() -> dict[str, Any]:
 
 
 def _ssl_context():
-    """Prefer certifi when present; fall back to default, then unverified for local macOS."""
     try:
         import certifi  # type: ignore
         import ssl
@@ -182,7 +202,6 @@ def graphql(token: str, query: str, variables: dict[str, Any] | None = None) -> 
         with urllib.request.urlopen(req, timeout=45, context=ctx) as resp:
             body = json.loads(resp.read().decode("utf-8"))
     except urllib.error.URLError:
-        # Last-resort local preview path (GitHub Actions uses a healthy CA store)
         import ssl
 
         with urllib.request.urlopen(
@@ -207,6 +226,7 @@ def fetch_telemetry(token: str | None) -> dict[str, Any]:
         login
         followers { totalCount }
         following { totalCount }
+        pullRequests(first: 1) { totalCount }
         repositories(first: 100, ownerAffiliations: OWNER, isFork: false, orderBy: {field: UPDATED_AT, direction: DESC}) {
           totalCount
           nodes {
@@ -235,9 +255,7 @@ def fetch_telemetry(token: str | None) -> dict[str, Any]:
         return mock_telemetry()
 
     user = data["user"]
-    weeks_raw = user["contributionsCollection"]["contributionCalendar"]["weeks"]
-    # Keep last 52 weeks
-    weeks_raw = weeks_raw[-52:]
+    weeks_raw = user["contributionsCollection"]["contributionCalendar"]["weeks"][-52:]
     weeks: list[list[int]] = []
     flat: list[int] = []
     for week in weeks_raw:
@@ -247,7 +265,6 @@ def fetch_telemetry(token: str | None) -> dict[str, Any]:
         weeks.append(days[:7])
         flat.extend(days[:7])
 
-    # Streaks (ending at today)
     current = 0
     for c in reversed(flat):
         if c > 0:
@@ -263,14 +280,12 @@ def fetch_telemetry(token: str | None) -> dict[str, Any]:
         else:
             run = 0
 
-    # Language weights across owned repos
     lang_bytes: dict[str, int] = {}
     for node in user["repositories"]["nodes"]:
         for edge in node["languages"]["edges"]:
             name = edge["node"]["name"]
             lang_bytes[name] = lang_bytes.get(name, 0) + edge["size"]
 
-    # Normalize / bucket minor languages
     rename = {"CSS": "HTML/CSS", "HTML": "HTML/CSS", "SCSS": "HTML/CSS"}
     merged: dict[str, int] = {}
     for name, size in lang_bytes.items():
@@ -290,7 +305,6 @@ def fetch_telemetry(token: str | None) -> dict[str, Any]:
     if other >= 0.5:
         top.append(("Other", round(other, 1)))
 
-    # Approximate commit volume from contribution calendar
     contributions = user["contributionsCollection"]["contributionCalendar"]["totalContributions"]
 
     return {
@@ -299,6 +313,7 @@ def fetch_telemetry(token: str | None) -> dict[str, Any]:
         "public_repos": user["repositories"]["totalCount"],
         "followers": user["followers"]["totalCount"],
         "following": user["following"]["totalCount"],
+        "pull_requests": user["pullRequests"]["totalCount"],
         "total_commits": contributions,
         "current_streak": current,
         "longest_streak": longest,
@@ -318,37 +333,32 @@ def build_hero(data: dict[str, Any]) -> None:
     w, h = 1200, 280
     parts = [svg_open(w, h)]
     parts.append(card(0.5, 0.5, w - 1, h - 1))
-
-    # Title-block grid
     parts.append(hairline_h(0, 48, w))
     parts.append(hairline_h(0, h - 40, w))
     parts.append(hairline_v(160, 0, h))
     parts.append(hairline_v(w - 220, 0, h))
 
-    # Corner marks
     for cx, cy in [(12, 12), (w - 12, 12), (12, h - 12), (w - 12, h - 12)]:
         parts.append(
             f'<path d="M{cx - 8},{cy} H{cx + 8} M{cx},{cy - 8} V{cy + 8}" '
-            f'stroke="{GOLD}" stroke-width="1.5"/>\n'
+            f'stroke="{ACCENT}" stroke-width="1.5"/>\n'
         )
 
-    # Left meta column
     parts.append(label(24, 28, "DWG 00 — TITLE BLOCK"))
     parts.append(label(24, 78, "SHEET"))
-    parts.append(gold_text(24, 108, "00", 36, "700"))
+    parts.append(accent_text(24, 108, "00", 36, "700"))
     parts.append(label(24, 140, "REV"))
-    parts.append(paper_text(24, 162, "A", 18, "600"))
+    parts.append(paper_text(24, 162, "B", 18, "600"))
     parts.append(label(24, 200, "SCALE"))
     parts.append(paper_text(24, 222, "1 : 1", 14))
 
-    # Center identity
     parts.append(label(180, 28, "SUBJECT / AUTHOR"))
     parts.append(
-        f'<text x="180" y="118" class="sans" font-size="42" font-weight="700" '
+        f'<text x="180" y="118" class="display" font-size="42" font-weight="700" '
         f'fill="{PAPER}" letter-spacing="-0.5">{esc(data["name"])}</text>\n'
     )
     parts.append(
-        f'<text x="180" y="152" class="mono" font-size="16" fill="{GOLD}">'
+        f'<text x="180" y="152" class="mono" font-size="16" fill="{ACCENT}">'
         f'/{esc(data["login"])}</text>\n'
     )
     parts.append(
@@ -360,22 +370,20 @@ def build_hero(data: dict[str, Any]) -> None:
         f'Full-Stack &amp; Systems Developer</text>\n'
     )
 
-    # Wireframe motif (right of center)
     gx, gy = 720, 70
     parts.append(
-        f'<g stroke="{GOLD}" stroke-width="1" fill="none" opacity="0.9">\n'
+        f'<g stroke="{ACCENT}" stroke-width="1" fill="none" opacity="0.9">\n'
         f'  <rect x="{gx}" y="{gy}" width="120" height="120"/>\n'
         f'  <line x1="{gx}" y1="{gy}" x2="{gx + 120}" y2="{gy + 120}"/>\n'
         f'  <line x1="{gx + 120}" y1="{gy}" x2="{gx}" y2="{gy + 120}"/>\n'
         f'  <circle cx="{gx + 60}" cy="{gy + 60}" r="28"/>\n'
-        f'  <circle cx="{gx + 60}" cy="{gy + 60}" r="8" fill="{GOLD}" stroke="none"/>\n'
+        f'  <circle cx="{gx + 60}" cy="{gy + 60}" r="8" fill="{ACCENT}" stroke="none"/>\n'
         f'  <path d="M{gx + 20},{gy + 100} L{gx + 60},{gy + 20} L{gx + 100},{gy + 100} Z"/>\n'
         f"</g>\n"
     )
 
-    # Right status column
     parts.append(label(w - 200, 28, "STATUS"))
-    parts.append(gold_text(w - 200, 78, data["status"], 18, "700"))
+    parts.append(accent_text(w - 200, 78, data["status"], 18, "700"))
     parts.append(label(w - 200, 110, "COORD / LOC"))
     parts.append(paper_text(w - 200, 132, "TORONTO, ON", 13))
     parts.append(label(w - 200, 164, "REPOS"))
@@ -383,24 +391,10 @@ def build_hero(data: dict[str, Any]) -> None:
     parts.append(label(w - 200, 214, "YR COMMITS"))
     parts.append(paper_text(w - 200, 236, str(data["contributions_year"]), 18, "600"))
 
-    # Footer strip
     parts.append(label(24, h - 16, f"LAST COMPILED  {data['compiled_at']}"))
     parts.append(label(w - 200, h - 16, f"SRC  {data['source'].upper()}"))
-
     parts.append(svg_close())
     write_svg("hero-blueprint.svg", "".join(parts))
-
-
-def intensity_color(count: int, peak: int) -> str:
-    if count <= 0:
-        return DIM
-    t = min(1.0, count / max(1, peak))
-    # Ramp DIM → GOLD
-    # DIM #1A1A1A → GOLD #FFD000
-    r = int(0x1A + t * (0xFF - 0x1A))
-    g = int(0x1A + t * (0xD0 - 0x1A))
-    b = int(0x1A + t * (0x00 - 0x1A))
-    return f"#{r:02X}{g:02X}{b:02X}"
 
 
 def build_telemetry_matrix(data: dict[str, Any]) -> None:
@@ -411,15 +405,13 @@ def build_telemetry_matrix(data: dict[str, Any]) -> None:
     grid_h = 7 * (cell + gap) - gap
     w = pad_l + grid_w + 200
     h = pad_t + grid_h + 72
-
     peak = max((c for week in weeks for c in week), default=1) or 1
 
     parts = [svg_open(w, h)]
     parts.append(card(0.5, 0.5, w - 1, h - 1))
     parts.append(label(20, 28, "SHEET 02A — CONTRIBUTION MATRIX"))
-    parts.append(gold_text(20, 48, "52-WEEK ACTIVITY · PLOTTER GRID", 12))
+    parts.append(accent_text(20, 48, "52-WEEK ACTIVITY · PLOTTER GRID", 12))
 
-    # Day labels
     day_labels = ["M", "", "W", "", "F", "", ""]
     for i, d in enumerate(day_labels):
         if d:
@@ -433,14 +425,13 @@ def build_telemetry_matrix(data: dict[str, Any]) -> None:
             x = pad_l + wi * (cell + gap)
             y = pad_t + di * (cell + gap)
             fill = intensity_color(count, peak)
-            stroke = GOLD if count >= peak * 0.75 and count > 0 else BORDER
-            sw = 1.2 if stroke == GOLD else 1
+            stroke = ACCENT if count >= peak * 0.75 and count > 0 else BORDER
+            sw = 1.2 if stroke == ACCENT else 1
             parts.append(
                 f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" '
                 f'fill="{fill}" stroke="{stroke}" stroke-width="{sw}"/>\n'
             )
 
-    # Side metrics
     mx = pad_l + grid_w + 28
     parts.append(hairline_v(mx - 16, 48, h - 80))
     metrics = [
@@ -452,9 +443,8 @@ def build_telemetry_matrix(data: dict[str, Any]) -> None:
     for i, (k, v) in enumerate(metrics):
         y = 70 + i * 48
         parts.append(label(mx, y, k, 9))
-        parts.append(gold_text(mx, y + 20, v, 20, "700"))
+        parts.append(accent_text(mx, y + 20, v, 20, "700"))
 
-    # Legend
     parts.append(label(20, h - 24, "INTENSITY"))
     for i in range(5):
         c = intensity_color(i, 4)
@@ -463,7 +453,6 @@ def build_telemetry_matrix(data: dict[str, Any]) -> None:
             f'fill="{c}" stroke="{BORDER}" stroke-width="1"/>\n'
         )
     parts.append(label(190, h - 24, "LOW → HIGH", 9))
-
     parts.append(svg_close())
     write_svg("telemetry-matrix.svg", "".join(parts))
 
@@ -474,20 +463,17 @@ def build_telemetry_languages(data: dict[str, Any]) -> None:
     parts = [svg_open(w, h)]
     parts.append(card(0.5, 0.5, w - 1, h - 1))
     parts.append(label(20, 28, "SHEET 02B — LANGUAGE & SYSTEMS DISTRIBUTION"))
-    parts.append(gold_text(20, 48, "WEIGHTED BY REPOSITORY BYTE MASS", 12))
+    parts.append(accent_text(20, 48, "WEIGHTED BY REPOSITORY BYTE MASS", 12))
     parts.append(hairline_h(20, 60, w - 40))
 
     bar_x, bar_w = 180, w - 220
     y0 = 88
-    row_h = 32
-
     for i, (name, pct) in enumerate(langs):
-        y = y0 + i * row_h
+        y = y0 + i * 32
         parts.append(
             f'<text x="24" y="{y + 14}" class="mono" font-size="12" fill="{PAPER}">'
             f"{esc(name.upper())}</text>\n"
         )
-        # Track
         parts.append(
             f'<rect x="{bar_x}" y="{y}" width="{bar_w}" height="16" '
             f'fill="{DIM}" stroke="{BORDER}" stroke-width="1"/>\n'
@@ -495,7 +481,7 @@ def build_telemetry_languages(data: dict[str, Any]) -> None:
         fill_w = max(2, bar_w * (pct / 100.0))
         parts.append(
             f'<rect x="{bar_x}" y="{y}" width="{fill_w:.1f}" height="16" '
-            f'fill="{GOLD}" opacity="0.92"/>\n'
+            f'fill="{ACCENT}" opacity="0.92"/>\n'
         )
         parts.append(
             f'<text x="{bar_x + bar_w + 8}" y="{y + 13}" class="mono" font-size="11" '
@@ -519,7 +505,7 @@ def build_architecture_flow() -> None:
     parts = [svg_open(w, h)]
     parts.append(card(0.5, 0.5, w - 1, h - 1))
     parts.append(label(20, 28, "SHEET 02C — WORKFLOW SCHEMATIC"))
-    parts.append(gold_text(20, 48, "HOW SYSTEMS MOVE FROM INTENT → ARTIFACT", 12))
+    parts.append(accent_text(20, 48, "HOW SYSTEMS MOVE FROM INTENT → ARTIFACT", 12))
     parts.append(hairline_h(20, 60, w - 40))
 
     box_w, box_h = 160, 72
@@ -532,7 +518,7 @@ def build_architecture_flow() -> None:
         x = x0 + i * (box_w + gap)
         parts.append(
             f'<rect x="{x}" y="{y}" width="{box_w}" height="{box_h}" '
-            f'fill="{DIM}" stroke="{GOLD if i == len(stages) - 1 else BORDER}" '
+            f'fill="{DIM}" stroke="{ACCENT if i == len(stages) - 1 else BORDER}" '
             f'stroke-width="1.5"/>\n'
         )
         parts.append(
@@ -547,12 +533,12 @@ def build_architecture_flow() -> None:
             ax = x + box_w
             parts.append(
                 f'<line x1="{ax + 4}" y1="{y + box_h / 2}" x2="{ax + gap - 10}" '
-                f'y2="{y + box_h / 2}" stroke="{GOLD}" stroke-width="1.5"/>\n'
+                f'y2="{y + box_h / 2}" stroke="{ACCENT}" stroke-width="1.5"/>\n'
             )
             parts.append(
                 f'<polygon points="{ax + gap - 10},{y + box_h / 2 - 5} '
                 f'{ax + gap - 2},{y + box_h / 2} '
-                f'{ax + gap - 10},{y + box_h / 2 + 5}" fill="{GOLD}"/>\n'
+                f'{ax + gap - 10},{y + box_h / 2 + 5}" fill="{ACCENT}"/>\n'
             )
 
     parts.append(label(24, h - 18, "LOOP: FAIL BENCHMARK → RETURN TO SPEC"))
@@ -586,7 +572,7 @@ def build_stack_matrix() -> None:
     parts = [svg_open(w, h)]
     parts.append(card(0.5, 0.5, w - 1, h - 1))
     parts.append(label(20, 26, "SHEET 04 — TECHNICAL MATRIX"))
-    parts.append(gold_text(20, 46, "VECTOR BADGE GRID · MONOCHROME + GOLD", 12))
+    parts.append(accent_text(20, 46, "VECTOR BADGE GRID · MONOCHROME + SIGNAL", 12))
 
     grid_y = 64
     for i, (abbr, name) in enumerate(cells):
@@ -598,14 +584,13 @@ def build_stack_matrix() -> None:
             f'<rect x="{x}" y="{y}" width="{cw}" height="{ch}" '
             f'fill="{DIM}" stroke="{BORDER}" stroke-width="1"/>\n'
         )
-        # gold corner tick
         parts.append(
-            f'<path d="M{x},{y + 12} V{y} H{x + 12}" stroke="{GOLD}" '
+            f'<path d="M{x},{y + 12} V{y} H{x + 12}" stroke="{ACCENT}" '
             f'stroke-width="1.5" fill="none"/>\n'
         )
         parts.append(
             f'<text x="{x + 12}" y="{y + 28}" class="mono" font-size="16" font-weight="700" '
-            f'fill="{GOLD}">{esc(abbr)}</text>\n'
+            f'fill="{ACCENT}">{esc(abbr)}</text>\n'
         )
         parts.append(
             f'<text x="{x + 12}" y="{y + 52}" class="sans" font-size="11" '
@@ -625,7 +610,7 @@ def build_footer(data: dict[str, Any]) -> None:
     parts.append(hairline_v(820, 0, h))
 
     parts.append(label(20, 28, "END OF DRAWING"))
-    parts.append(gold_text(20, 58, "FADED DARTS", 16, "700"))
+    parts.append(accent_text(20, 58, "FADED DARTS", 16, "700"))
     parts.append(paper_text(20, 82, "PROFILE README", 12))
     parts.append(label(20, 104, f"COMPILED  {data['compiled_at']}", 9))
 
@@ -640,12 +625,280 @@ def build_footer(data: dict[str, Any]) -> None:
             f'<text x="{x}" y="68" class="mono" font-size="12" fill="{PAPER}">'
             f"{esc(url)}</text>\n"
         )
-        parts.append(
-            f'<rect x="{x}" y="84" width="40" height="3" fill="{GOLD}"/>\n'
-        )
+        parts.append(f'<rect x="{x}" y="84" width="40" height="3" fill="{ACCENT}"/>\n')
 
     parts.append(svg_close())
     write_svg("footer-block.svg", "".join(parts))
+
+
+def build_kinetic_telemetry(data: dict[str, Any]) -> None:
+    """840×320 kinetic instrument: isometric skyline + radar + oscilloscope."""
+    w, h = 840, 320
+    weeks = data["weeks"]
+    # Aggregate weekly totals for skyline columns
+    weekly = [sum(days) for days in weeks]
+    while len(weekly) < 52:
+        weekly.insert(0, 0)
+    weekly = weekly[-52:]
+    peak_w = max(weekly) or 1
+    peak_d = max((c for week in weeks for c in week), default=1) or 1
+
+    # Radar axes normalized 0..1
+    commits_n = min(1.0, data["contributions_year"] / 400.0)
+    repos_n = min(1.0, data["public_repos"] / 40.0)
+    prs_n = min(1.0, data.get("pull_requests", 0) / 40.0)
+    streak_n = min(1.0, max(data["current_streak"], data["longest_streak"]) / 30.0)
+    axes = [
+        ("COMMITS", commits_n),
+        ("REPOS", repos_n),
+        ("PULL REQUESTS", prs_n),
+        ("STREAK", streak_n),
+    ]
+
+    top_lang = data["languages"][0][0] if data["languages"] else "—"
+
+    parts: list[str] = []
+    parts.append(
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" '
+        f'viewBox="0 0 {w} {h}" role="img">\n'
+    )
+    parts.append("<defs>\n")
+    parts.append(
+        f'<style><![CDATA[\n'
+        f"  .mono {{ font-family: {MONO}; }}\n"
+        f"  .sans {{ font-family: {SANS}; }}\n"
+        f"  .display {{ font-family: {DISPLAY}; }}\n"
+        f"  @keyframes scan {{\n"
+        f"    0% {{ transform: translateX(0); opacity: 0.15; }}\n"
+        f"    8% {{ opacity: 0.95; }}\n"
+        f"    92% {{ opacity: 0.95; }}\n"
+        f"    100% {{ transform: translateX(470px); opacity: 0.15; }}\n"
+        f"  }}\n"
+        f"  @keyframes pulse {{\n"
+        f"    0%, 100% {{ opacity: 0.35; }}\n"
+        f"    50% {{ opacity: 1; }}\n"
+        f"  }}\n"
+        f"  @keyframes ring {{\n"
+        f"    0% {{ r: 18; opacity: 0.7; }}\n"
+        f"    100% {{ r: 78; opacity: 0; }}\n"
+        f"  }}\n"
+        f"  @keyframes dash {{\n"
+        f"    to {{ stroke-dashoffset: -420; }}\n"
+        f"  }}\n"
+        f"  @keyframes nodeblink {{\n"
+        f"    0%, 100% {{ opacity: 0.55; }}\n"
+        f"    50% {{ opacity: 1; }}\n"
+        f"  }}\n"
+        f"  .scan-beam {{\n"
+        f"    animation: scan 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;\n"
+        f"  }}\n"
+        f"  .tower-pulse {{\n"
+        f"    animation: pulse 2.4s ease-in-out infinite;\n"
+        f"  }}\n"
+        f"  .radar-ring {{\n"
+        f"    fill: none; stroke: {ACCENT}; stroke-width: 1;\n"
+        f"    animation: ring 2.8s linear infinite;\n"
+        f"  }}\n"
+        f"  .wave {{\n"
+        f"    fill: none; stroke: {ACCENT}; stroke-width: 1.6;\n"
+        f"    stroke-dasharray: 12 8;\n"
+        f"    animation: dash 2.2s linear infinite;\n"
+        f"  }}\n"
+        f"  .node {{\n"
+        f"    animation: nodeblink 1.6s ease-in-out infinite;\n"
+        f"  }}\n"
+        f"]]></style>\n"
+    )
+    parts.append(
+        f'<linearGradient id="beamGrad" x1="0" y1="0" x2="0" y2="1">\n'
+        f'  <stop offset="0%" stop-color="{ACCENT}" stop-opacity="0"/>\n'
+        f'  <stop offset="35%" stop-color="{ACCENT}" stop-opacity="0.55"/>\n'
+        f'  <stop offset="100%" stop-color="{ACCENT}" stop-opacity="0"/>\n'
+        f"</linearGradient>\n"
+    )
+    parts.append(
+        f'<linearGradient id="panelGrad" x1="0" y1="0" x2="1" y2="1">\n'
+        f'  <stop offset="0%" stop-color="{INK}"/>\n'
+        f'  <stop offset="100%" stop-color="{DIM}"/>\n'
+        f"</linearGradient>\n"
+    )
+    parts.append("</defs>\n")
+
+    # Frame + structural grid
+    parts.append(card(0.5, 0.5, w - 1, h - 1))
+    parts.append(f'<rect x="1" y="1" width="{w - 2}" height="{h - 2}" fill="url(#panelGrad)" opacity="0.35"/>\n')
+    for gx in range(0, w, 40):
+        parts.append(f'<line x1="{gx}" y1="36" x2="{gx}" y2="{h - 1}" stroke="{BORDER}" stroke-width="1" opacity="0.45"/>\n')
+    for gy in range(36, h, 40):
+        parts.append(f'<line x1="0" y1="{gy}" x2="{w}" y2="{gy}" stroke="{BORDER}" stroke-width="1" opacity="0.45"/>\n')
+
+    parts.append(hairline_h(0, 36, w))
+    parts.append(hairline_v(520, 36, h - 36))
+    parts.append(label(14, 24, "KINETIC TELEMETRY & ARCHITECTURAL SYNTHESIZER"))
+    parts.append(accent_text(620, 24, f"SRC {data['source'].upper()} · {data['compiled_at']}", 9))
+
+    # ── Left: isometric weekly skyline ──────────────────────────────────────
+    parts.append(label(16, 54, "01  ISOMETRIC COMMIT SKYLINE — 52 WEEKS"))
+
+    # Isometric projection helpers
+    # Column along week index; height from weekly total
+    origin_x, origin_y = 48, 268
+    sx, sy = 7.2, 4.0  # isometric scale
+    max_h = 118.0
+
+    # Ground plane diamond-ish grid
+    parts.append(
+        f'<path d="M{origin_x},{origin_y} L{origin_x + 52 * sx},{origin_y - 52 * sy * 0.35} '
+        f'L{origin_x + 52 * sx + 28},{origin_y - 52 * sy * 0.35 - 14} '
+        f'L{origin_x + 28},{origin_y - 14} Z" fill="{DIM}" stroke="{BORDER}" stroke-width="1"/>\n'
+    )
+
+    for i, total in enumerate(weekly):
+        t = total / peak_w
+        height = 6 + t * max_h
+        # isometric base position
+        bx = origin_x + i * sx
+        by = origin_y - i * sy * 0.35
+        # box dimensions in iso
+        hw, hd = 5.5, 4.5
+        top_y = by - height
+        fill = intensity_color(max(1, total) if total else 0, peak_w) if total else DIM
+        # faces: left, right, top
+        # right face
+        parts.append(
+            f'<polygon points="{bx},{by} {bx + hw},{by - hd} {bx + hw},{top_y - hd} {bx},{top_y}" '
+            f'fill="{fill}" stroke="{BORDER}" stroke-width="0.6" opacity="0.95"/>\n'
+        )
+        # left/back face (darker)
+        left_fill = lerp_hex(fill, INK, 0.35)
+        parts.append(
+            f'<polygon points="{bx},{by} {bx},{top_y} {bx - hw * 0.55},{top_y - hd * 0.4} '
+            f'{bx - hw * 0.55},{by - hd * 0.4}" '
+            f'fill="{left_fill}" stroke="{BORDER}" stroke-width="0.5" opacity="0.9"/>\n'
+        )
+        # top face
+        top_fill = lerp_hex(fill, ACCENT, 0.25) if total else BORDER
+        parts.append(
+            f'<polygon class="{"tower-pulse" if t > 0.55 else ""}" '
+            f'style="animation-delay:{(i % 12) * 0.12:.2f}s" '
+            f'points="{bx},{top_y} {bx + hw},{top_y - hd} '
+            f'{bx + hw - hw * 0.55},{top_y - hd - hd * 0.4} {bx - hw * 0.55},{top_y - hd * 0.4}" '
+            f'fill="{top_fill}" stroke="{ACCENT if t > 0.7 else BORDER}" stroke-width="0.7"/>\n'
+        )
+
+    # Scanning laser beam
+    parts.append(
+        f'<g class="scan-beam">\n'
+        f'  <rect x="{origin_x}" y="58" width="3" height="210" fill="url(#beamGrad)"/>\n'
+        f'  <line x1="{origin_x + 1.5}" y1="58" x2="{origin_x + 1.5}" y2="268" '
+        f'stroke="{ACCENT}" stroke-width="1.2" opacity="0.9"/>\n'
+        f"</g>\n"
+    )
+
+    # SMIL fallback scan for environments that strip CSS animation on img
+    parts.append(
+        f'<rect x="{origin_x}" y="58" width="2" height="210" fill="{ACCENT}" opacity="0.25">\n'
+        f'  <animate attributeName="x" values="{origin_x};{origin_x + 470};{origin_x}" '
+        f'dur="4.8s" repeatCount="indefinite"/>\n'
+        f'  <animate attributeName="opacity" values="0.1;0.55;0.1" dur="4.8s" repeatCount="indefinite"/>\n'
+        f"</rect>\n"
+    )
+
+    # ── Right top: radar ─────────────────────────────────────────────────────
+    parts.append(label(536, 54, "02  RADAR — COMMITS / REPOS / PRS / STREAK"))
+    cx, cy, rr = 680, 130, 58
+    for ring_r in (20, 38, 58):
+        parts.append(
+            f'<circle cx="{cx}" cy="{cy}" r="{ring_r}" fill="none" stroke="{BORDER}" stroke-width="1"/>\n'
+        )
+    # Animated pulse rings (CSS + SMIL)
+    parts.append(
+        f'<circle class="radar-ring" cx="{cx}" cy="{cy}" r="18" stroke="{ACCENT}">\n'
+        f'  <animate attributeName="r" values="18;78" dur="2.8s" repeatCount="indefinite"/>\n'
+        f'  <animate attributeName="opacity" values="0.7;0" dur="2.8s" repeatCount="indefinite"/>\n'
+        f"</circle>\n"
+    )
+    parts.append(
+        f'<circle cx="{cx}" cy="{cy}" r="18" fill="none" stroke="{ACCENT}" opacity="0.4">\n'
+        f'  <animate attributeName="r" values="18;78" dur="2.8s" begin="1.4s" repeatCount="indefinite"/>\n'
+        f'  <animate attributeName="opacity" values="0.55;0" dur="2.8s" begin="1.4s" repeatCount="indefinite"/>\n'
+        f"</circle>\n"
+    )
+
+    # Axis lines + labels
+    poly_pts: list[str] = []
+    for i, (name, val) in enumerate(axes):
+        ang = -math.pi / 2 + i * (math.pi / 2)
+        x2 = cx + math.cos(ang) * rr
+        y2 = cy + math.sin(ang) * rr
+        parts.append(
+            f'<line x1="{cx}" y1="{cy}" x2="{x2:.1f}" y2="{y2:.1f}" '
+            f'stroke="{BORDER}" stroke-width="1"/>\n'
+        )
+        lx = cx + math.cos(ang) * (rr + 14)
+        ly = cy + math.sin(ang) * (rr + 14)
+        parts.append(
+            f'<text x="{lx:.1f}" y="{ly:.1f}" class="mono" font-size="8" fill="{SLATE}" '
+            f'text-anchor="middle" dominant-baseline="middle">{esc(name)}</text>\n'
+        )
+        px = cx + math.cos(ang) * rr * max(0.12, val)
+        py = cy + math.sin(ang) * rr * max(0.12, val)
+        poly_pts.append(f"{px:.1f},{py:.1f}")
+
+    parts.append(
+        f'<polygon points="{" ".join(poly_pts)}" fill="{ACCENT}" fill-opacity="0.18" '
+        f'stroke="{ACCENT}" stroke-width="1.5"/>\n'
+    )
+    for i, pt in enumerate(poly_pts):
+        px, py = pt.split(",")
+        delay = i * 0.2
+        parts.append(
+            f'<circle class="node" style="animation-delay:{delay:.1f}s" '
+            f'cx="{px}" cy="{py}" r="3.2" fill="{ACCENT}">\n'
+            f'  <animate attributeName="opacity" values="0.5;1;0.5" dur="1.6s" '
+            f'begin="{delay:.1f}s" repeatCount="indefinite"/>\n'
+            f"</circle>\n"
+        )
+
+    # ── Right bottom: oscilloscope ───────────────────────────────────────────
+    parts.append(hairline_h(520, 198, w - 520))
+    parts.append(label(536, 216, "03  CODE VELOCITY OSCILLOSCOPE"))
+
+    # Waveform from weekly rhythm
+    path_cmds: list[str] = []
+    wx0, wy0, ww, wh = 540, 248, 270, 42
+    for i, total in enumerate(weekly):
+        x = wx0 + (i / 51) * ww
+        amp = (total / peak_w) * (wh / 2)
+        # Add slight sine for continuous motion feel
+        y = wy0 + math.sin(i * 0.55) * 3 - amp
+        path_cmds.append(("M" if i == 0 else "L") + f"{x:.1f},{y:.1f}")
+    wave_d = " ".join(path_cmds)
+    parts.append(
+        f'<rect x="{wx0 - 4}" y="{wy0 - wh / 2 - 4}" width="{ww + 8}" height="{wh + 12}" '
+        f'fill="{DIM}" stroke="{BORDER}" stroke-width="1"/>\n'
+    )
+    parts.append(f'<path class="wave" d="{wave_d}"/>\n')
+    # SMIL dashoffset fallback
+    parts.append(
+        f'<path d="{wave_d}" fill="none" stroke="{ACCENT}" stroke-width="1.2" '
+        f'stroke-dasharray="10 7" opacity="0.55">\n'
+        f'  <animate attributeName="stroke-dashoffset" from="0" to="-420" '
+        f'dur="2.2s" repeatCount="indefinite"/>\n'
+        f"</path>\n"
+    )
+
+    # Readouts
+    parts.append(
+        f'<text x="540" y="308" class="mono" font-size="9" fill="{SLATE}">'
+        f'TOTAL_COMMITS <tspan fill="{ACCENT}" font-weight="700">{data["contributions_year"]}</tspan>'
+        f'   ACTIVE_STREAK <tspan fill="{ACCENT}" font-weight="700">{data["current_streak"]}d</tspan>'
+        f'   TOP_LANGUAGE <tspan fill="{PAPER}" font-weight="700">{esc(top_lang.upper())}</tspan>'
+        f"</text>\n"
+    )
+
+    parts.append(svg_close())
+    write_svg("kinetic-telemetry.svg", "".join(parts))
 
 
 # ── Main ─────────────────────────────────────────────────────────────────────
@@ -658,6 +911,7 @@ def main() -> int:
     print(f"  source={data['source']} compiled={data['compiled_at']}")
 
     build_hero(data)
+    build_kinetic_telemetry(data)
     build_telemetry_matrix(data)
     build_telemetry_languages(data)
     build_architecture_flow()
@@ -669,7 +923,9 @@ def main() -> int:
         "source": data["source"],
         "contributions_year": data["contributions_year"],
         "current_streak": data["current_streak"],
+        "pull_requests": data.get("pull_requests", 0),
         "languages": data["languages"],
+        "accent": ACCENT,
     }
     (ASSETS / "build-meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
     print("  wrote assets/build-meta.json")

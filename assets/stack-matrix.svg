@@ -1,75 +1,76 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="280" viewBox="0 0 1100 280" role="img" >
 <defs>
   <style><![CDATA[
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-    .sans { font-family: Inter, Helvetica Neue, Helvetica, Arial, sans-serif; }
+    .mono { font-family: "Noto Sans Mono", "SF Mono", Menlo, Consolas, monospace; }
+    .sans { font-family: "Noto Sans", Montserrat, "Google Sans", "Segoe UI", Helvetica, Arial, sans-serif; }
+    .display { font-family: "Playfair Display", Georgia, "Times New Roman", serif; }
   ]]></style>
 </defs>
 <rect x="0.5" y="0.5" width="1099" height="279" fill="#0A0A0A" stroke="#262626" stroke-width="1"/>
 <text x="20" y="26" class="mono" font-size="10" fill="#8A8A8E" letter-spacing="1.5">SHEET 04 — TECHNICAL MATRIX</text>
-<text x="20" y="46" class="mono" font-size="12" font-weight="600" fill="#FFD000">VECTOR BADGE GRID · MONOCHROME + GOLD</text>
+<text x="20" y="46" class="mono" font-size="12" font-weight="600" fill="#2B6CFF">VECTOR BADGE GRID · MONOCHROME + SIGNAL</text>
 <rect x="24" y="64" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M24,76 V64 H36" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="36" y="92" class="mono" font-size="16" font-weight="700" fill="#FFD000">PY</text>
+<path d="M24,76 V64 H36" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="36" y="92" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">PY</text>
 <text x="36" y="116" class="sans" font-size="11" fill="#F4F4F0">Python</text>
 <rect x="154" y="64" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M154,76 V64 H166" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="166" y="92" class="mono" font-size="16" font-weight="700" fill="#FFD000">TS</text>
+<path d="M154,76 V64 H166" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="166" y="92" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">TS</text>
 <text x="166" y="116" class="sans" font-size="11" fill="#F4F4F0">TypeScript</text>
 <rect x="284" y="64" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M284,76 V64 H296" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="296" y="92" class="mono" font-size="16" font-weight="700" fill="#FFD000">JS</text>
+<path d="M284,76 V64 H296" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="296" y="92" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">JS</text>
 <text x="296" y="116" class="sans" font-size="11" fill="#F4F4F0">JavaScript</text>
 <rect x="414" y="64" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M414,76 V64 H426" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="426" y="92" class="mono" font-size="16" font-weight="700" fill="#FFD000">SW</text>
+<path d="M414,76 V64 H426" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="426" y="92" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">SW</text>
 <text x="426" y="116" class="sans" font-size="11" fill="#F4F4F0">Swift</text>
 <rect x="544" y="64" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M544,76 V64 H556" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="556" y="92" class="mono" font-size="16" font-weight="700" fill="#FFD000">C</text>
+<path d="M544,76 V64 H556" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="556" y="92" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">C</text>
 <text x="556" y="116" class="sans" font-size="11" fill="#F4F4F0">C / C++</text>
 <rect x="674" y="64" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M674,76 V64 H686" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="686" y="92" class="mono" font-size="16" font-weight="700" fill="#FFD000">SQL</text>
+<path d="M674,76 V64 H686" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="686" y="92" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">SQL</text>
 <text x="686" y="116" class="sans" font-size="11" fill="#F4F4F0">SQL</text>
 <rect x="804" y="64" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M804,76 V64 H816" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="816" y="92" class="mono" font-size="16" font-weight="700" fill="#FFD000">NX</text>
+<path d="M804,76 V64 H816" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="816" y="92" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">NX</text>
 <text x="816" y="116" class="sans" font-size="11" fill="#F4F4F0">Next.js</text>
 <rect x="934" y="64" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M934,76 V64 H946" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="946" y="92" class="mono" font-size="16" font-weight="700" fill="#FFD000">R</text>
+<path d="M934,76 V64 H946" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="946" y="92" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">R</text>
 <text x="946" y="116" class="sans" font-size="11" fill="#F4F4F0">React</text>
 <rect x="24" y="146" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M24,158 V146 H36" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="36" y="174" class="mono" font-size="16" font-weight="700" fill="#FFD000">GL</text>
+<path d="M24,158 V146 H36" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="36" y="174" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">GL</text>
 <text x="36" y="198" class="sans" font-size="11" fill="#F4F4F0">WebGL</text>
 <rect x="154" y="146" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M154,158 V146 H166" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="166" y="174" class="mono" font-size="16" font-weight="700" fill="#FFD000">FA</text>
+<path d="M154,158 V146 H166" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="166" y="174" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">FA</text>
 <text x="166" y="198" class="sans" font-size="11" fill="#F4F4F0">FastAPI</text>
 <rect x="284" y="146" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M284,158 V146 H296" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="296" y="174" class="mono" font-size="16" font-weight="700" fill="#FFD000">PR</text>
+<path d="M284,158 V146 H296" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="296" y="174" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">PR</text>
 <text x="296" y="198" class="sans" font-size="11" fill="#F4F4F0">Prisma</text>
 <rect x="414" y="146" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M414,158 V146 H426" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="426" y="174" class="mono" font-size="16" font-weight="700" fill="#FFD000">DK</text>
+<path d="M414,158 V146 H426" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="426" y="174" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">DK</text>
 <text x="426" y="198" class="sans" font-size="11" fill="#F4F4F0">Docker</text>
 <rect x="544" y="146" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M544,158 V146 H556" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="556" y="174" class="mono" font-size="16" font-weight="700" fill="#FFD000">GH</text>
+<path d="M544,158 V146 H556" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="556" y="174" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">GH</text>
 <text x="556" y="198" class="sans" font-size="11" fill="#F4F4F0">Git</text>
 <rect x="674" y="146" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M674,158 V146 H686" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="686" y="174" class="mono" font-size="16" font-weight="700" fill="#FFD000">iOS</text>
+<path d="M674,158 V146 H686" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="686" y="174" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">iOS</text>
 <text x="686" y="198" class="sans" font-size="11" fill="#F4F4F0">Vision</text>
 <rect x="804" y="146" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M804,158 V146 H816" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="816" y="174" class="mono" font-size="16" font-weight="700" fill="#FFD000">BS</text>
+<path d="M804,158 V146 H816" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="816" y="174" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">BS</text>
 <text x="816" y="198" class="sans" font-size="11" fill="#F4F4F0">BeautifulSoup</text>
 <rect x="934" y="146" width="120" height="72" fill="#1A1A1A" stroke="#262626" stroke-width="1"/>
-<path d="M934,158 V146 H946" stroke="#FFD000" stroke-width="1.5" fill="none"/>
-<text x="946" y="174" class="mono" font-size="16" font-weight="700" fill="#FFD000">ND</text>
+<path d="M934,158 V146 H946" stroke="#2B6CFF" stroke-width="1.5" fill="none"/>
+<text x="946" y="174" class="mono" font-size="16" font-weight="700" fill="#2B6CFF">ND</text>
 <text x="946" y="198" class="sans" font-size="11" fill="#F4F4F0">Node.js</text>
 </svg>

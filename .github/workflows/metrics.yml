@@ -1,0 +1,95 @@
+name: Profile Metrics
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - ".github/workflows/metrics.yml"
+      - ".github/profile-3d-contrib/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-metrics
+  cancel-in-progress: true
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate 3D contribution cityscape
+        uses: yoshi389111/github-profile-3d-contrib@0.9.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+          SETTINGS_JSON_PATH: .github/profile-3d-contrib/config.json
+
+      - name: Normalize 3D output into assets/
+        run: |
+          mkdir -p assets
+          # Action writes under profile-3d-contrib/; copy primary SVG
+          if [ -f profile-3d-contrib/profile-gitblock.svg ]; then
+            cp profile-3d-contrib/profile-gitblock.svg assets/profile-3d.svg
+          elif [ -f profile-3d-contrib/profile-night-green.svg ]; then
+            cp profile-3d-contrib/profile-night-green.svg assets/profile-3d.svg
+          else
+            # Prefer any generated svg
+            first=$(find profile-3d-contrib -name '*.svg' 2>/dev/null | head -n 1 || true)
+            if [ -n "$first" ]; then
+              cp "$first" assets/profile-3d.svg
+            else
+              echo "No 3d-contrib SVG found — will rely on custom kinetic assets"
+            fi
+          fi
+          ls -la profile-3d-contrib 2>/dev/null || true
+          ls -la assets
+
+      - name: Generate snake / laser grid (Platane/snk)
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            assets/grid-animation.svg
+            assets/grid-animation-dark.svg?palette=github-dark&color_snake=#2B6CFF&color_dots=#1A1A1A,#142A66,#1A4ACC,#2B6CFF,#5B8FFF
+
+      - name: Custom kinetic grid fallback + pipeline SVGs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/build_assets.py
+          python3 scripts/generate_kinetic_grid.py
+          # If snk wrote a snake svg under another name, keep grid-animation.svg
+          if [ ! -f assets/grid-animation.svg ]; then
+            echo "snk missing — kinetic generator already wrote grid-animation.svg"
+          fi
+
+      - name: Retheme third-party SVGs to Swiss palette
+        run: python3 scripts/retheme_svgs.py
+
+      - name: Commit metrics assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/ .github/profile-3d-contrib/ || true
+          # Also stage profile-3d-contrib outputs if present
+          git add profile-3d-contrib/ 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "No metric asset changes"
+          else
+            git commit -m "chore: refresh kinetic metrics assets [skip ci]"
+            git push
+          fi

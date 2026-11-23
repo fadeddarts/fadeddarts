@@ -34,7 +34,10 @@ jobs:
       - name: Compile SVG assets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/build_assets.py
+        run: |
+          python3 scripts/build_assets.py
+          python3 scripts/generate_kinetic_grid.py
+          python3 scripts/retheme_svgs.py
 
       - name: Commit updated assets
         run: |

@@ -1,32 +1,38 @@
 {
-  "compiled_at": "2026-11-23 01:17 UTC",
+  "compiled_at": "2026-11-23 01:25 UTC",
   "source": "github",
-  "contributions_year": 96,
+  "contributions_year": 107,
   "current_streak": 0,
+  "pull_requests": 3,
   "languages": [
     [
       "HTML/CSS",
-      35.4
+      27.1
     ],
     [
       "TypeScript",
-      33.1
-    ],
-    [
-      "JavaScript",
-      15.4
+      25.3
     ],
     [
       "Python",
-      14.1
+      19.6
+    ],
+    [
+      "JavaScript",
+      18.1
+    ],
+    [
+      "Swift",
+      8.4
     ],
     [
       "Assembly",
-      0.9
+      0.7
     ],
     [
-      "PLpgSQL",
-      0.9
+      "Other",
+      0.8
     ]
-  ]
+  ],
+  "accent": "#2B6CFF"
 }

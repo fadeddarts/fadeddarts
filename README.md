@@ -1,7 +1,7 @@
 <!--
   fadeddarts · GitHub Profile README
   Swiss Minimalist × Neo-Brutalist engineering manual
-  Assets compiled by scripts/build_assets.py
+  Assets: scripts/build_assets.py · scripts/generate_kinetic_grid.py · metrics.yml
 -->
 
 <p align="center">
@@ -25,7 +25,28 @@ CURRENTLY   refining sprint tooling, iOS vision alarms, and profile telemetry pi
 
 ## `SHEET 02` — LIVE TELEMETRY
 
-Custom SVGs compiled from the GitHub GraphQL API (palette-locked — no third-party stat cards).
+Palette-locked instruments compiled from the GitHub GraphQL API — no third-party stat cards.
+
+<!-- Centerpiece: kinetic synthesizer (CSS @keyframes + SMIL) -->
+<p align="center">
+  <img src="./assets/kinetic-telemetry.svg" alt="Kinetic Telemetry and Architectural Synthesizer" width="100%" />
+</p>
+
+<!-- 3D isometric cityscape + radar (github-profile-3d-contrib → rethemed) -->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-3d.svg" />
+    <img src="./assets/profile-3d.svg" alt="3D isometric contribution cityscape and radar" width="100%" />
+  </picture>
+</p>
+
+<!-- Animated contribution grid / laser sweep -->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/grid-animation.svg" />
+    <img src="./assets/grid-animation.svg" alt="Animated contribution grid laser sweep" width="100%" />
+  </picture>
+</p>
 
 <p align="center">
   <img src="./assets/telemetry-matrix.svg" alt="52-week contribution matrix" width="100%" />
@@ -107,5 +128,5 @@ SYSTEMS & TOOLING    Git · Docker · BeautifulSoup · PowerShell automation · 
 </p>
 
 <p align="center">
-  <sub>INK #0A0A0A · PAPER #F4F4F0 · SLATE #8A8A8E · GOLD #FFD000 — compiled assets, not a template.</sub>
+  <sub>INK #0A0A0A · PAPER #F4F4F0 · SLATE #8A8A8E · SIGNAL #2B6CFF — Noto Sans / Montserrat / Playfair Display.</sub>
 </p>

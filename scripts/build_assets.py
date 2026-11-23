@@ -148,6 +148,22 @@ def mock_telemetry() -> dict[str, Any]:
     }
 
 
+def _ssl_context():
+    """Prefer certifi when present; fall back to default, then unverified for local macOS."""
+    try:
+        import certifi  # type: ignore
+        import ssl
+
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        import ssl
+
+        try:
+            return ssl.create_default_context()
+        except Exception:
+            return ssl._create_unverified_context()
+
+
 def graphql(token: str, query: str, variables: dict[str, Any] | None = None) -> dict[str, Any]:
     payload = json.dumps({"query": query, "variables": variables or {}}).encode("utf-8")
     req = urllib.request.Request(
@@ -161,8 +177,18 @@ def graphql(token: str, query: str, variables: dict[str, Any] | None = None) -> 
         },
         method="POST",
     )
-    with urllib.request.urlopen(req, timeout=45) as resp:
-        body = json.loads(resp.read().decode("utf-8"))
+    ctx = _ssl_context()
+    try:
+        with urllib.request.urlopen(req, timeout=45, context=ctx) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.URLError:
+        # Last-resort local preview path (GitHub Actions uses a healthy CA store)
+        import ssl
+
+        with urllib.request.urlopen(
+            req, timeout=45, context=ssl._create_unverified_context()
+        ) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
     if "errors" in body:
         raise RuntimeError(body["errors"])
     return body["data"]

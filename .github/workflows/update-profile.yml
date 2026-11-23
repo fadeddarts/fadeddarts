@@ -5,8 +5,6 @@ on:
     branches: [main]
     paths:
       - "scripts/**"
-      - "assets/**"
-      - "README.md"
       - ".github/workflows/update-profile.yml"
   schedule:
     - cron: "0 0 * * *"
@@ -22,6 +20,8 @@ concurrency:
 jobs:
   build-assets:
     runs-on: ubuntu-latest
+    # Avoid recursive runs when this job commits refreshed SVGs
+    if: github.actor != 'github-actions[bot]'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,6 +44,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No asset changes"
           else
-            git commit -m "chore: refresh profile telemetry assets"
+            git commit -m "chore: refresh profile telemetry assets [skip ci]"
             git push
           fi

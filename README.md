@@ -1,12 +1,11 @@
 <!--
   fadeddarts · GitHub Profile README
-  Swiss Minimalist × Neo-Brutalist engineering manual
-  Assets: scripts/build_assets.py · scripts/generate_kinetic_grid.py · metrics.yml
+  Widgets: yoshi389111/github-profile-3d-contrib + Platane/snk
 -->
 
-<p align="center">
-  <img src="./assets/hero-blueprint.svg" alt="Harpuneet Singh — fadeddarts title block" width="100%" />
-</p>
+# Harpuneet Singh / `fadeddarts`
+
+Computer Science @ Toronto Metropolitan University · Full-Stack & Systems Developer · Toronto, ON
 
 ---
 
@@ -18,46 +17,19 @@ CS co-op student at Toronto Metropolitan University building full-stack systems 
 FOCUS       full-stack systems · automation · computer vision · interactive graphics
 BUILDING    SprintForge · CV Object-Lock Alarm · 3D RGB Layer Decomposer · TMU Curriculum Pipeline
 STACK       TypeScript · Python · Swift · Next.js · Prisma · WebGL · FastAPI
-CURRENTLY   refining sprint tooling, iOS vision alarms, and profile telemetry pipeline
+CURRENTLY   refining sprint tooling, iOS vision alarms, and profile telemetry widgets
 ```
 
 ---
 
-## `SHEET 02` — LIVE TELEMETRY
+## `SHEET 02` — TELEMETRY
 
-Palette-locked instruments compiled from the GitHub GraphQL API — no third-party stat cards.
-
-<!-- Centerpiece: kinetic synthesizer (CSS @keyframes + SMIL) -->
 <p align="center">
-  <img src="./assets/kinetic-telemetry.svg" alt="Kinetic Telemetry and Architectural Synthesizer" width="100%" />
-</p>
-
-<!-- 3D isometric cityscape + radar (github-profile-3d-contrib → rethemed) -->
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-3d.svg" />
-    <img src="./assets/profile-3d.svg" alt="3D isometric contribution cityscape and radar" width="100%" />
-  </picture>
-</p>
-
-<!-- Animated contribution grid / laser sweep -->
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/grid-animation.svg" />
-    <img src="./assets/grid-animation.svg" alt="Animated contribution grid laser sweep" width="100%" />
-  </picture>
+  <img src="./assets/profile-3d-contrib.svg" alt="3D isometric contribution cityscape, language donut, and radar" width="100%" />
 </p>
 
 <p align="center">
-  <img src="./assets/telemetry-matrix.svg" alt="52-week contribution matrix" width="100%" />
-</p>
-
-<p align="center">
-  <img src="./assets/telemetry-languages.svg" alt="Language and systems distribution" width="100%" />
-</p>
-
-<p align="center">
-  <img src="./assets/architecture-flow.svg" alt="Build workflow schematic" width="100%" />
+  <img src="./assets/github-contribution-grid-snake.svg" alt="Animated snake eating the contribution grid" width="100%" />
 </p>
 
 ---
@@ -88,10 +60,6 @@ Palette-locked instruments compiled from the GitHub GraphQL API — no third-par
 
 ## `SHEET 04` — TECHNICAL MATRIX
 
-<p align="center">
-  <img src="./assets/stack-matrix.svg" alt="Technical stack badge grid" width="100%" />
-</p>
-
 ```
 LANGUAGES            Python · TypeScript · JavaScript · Swift · SQL · C/C++ · HTML/CSS
 FRONTEND & MOBILE    Next.js · React · WebGL/Canvas · GSAP · SwiftUI/UIKit · Vision
@@ -112,21 +80,11 @@ SYSTEMS & TOOLING    Git · Docker · BeautifulSoup · PowerShell automation · 
 ---
 
 <p align="center">
-  <img src="./assets/footer-block.svg" alt="Footer title block — portfolio, repos, LinkedIn" width="100%" />
-</p>
-
-<p align="center">
-  <sub>
-    <a href="https://fadeddarts.github.io/portfolio/">PORTFOLIO</a>
-    ·
-    <a href="https://github.com/fadeddarts?tab=repositories">REPOSITORIES</a>
-    ·
-    <a href="https://www.linkedin.com/in/harpuneet-390-singh/">LINKEDIN</a>
-    ·
-    <a href="mailto:harpuneet.singh@torontomu.ca">EMAIL</a>
-  </sub>
-</p>
-
-<p align="center">
-  <sub>INK #0A0A0A · PAPER #F4F4F0 · SLATE #8A8A8E · SIGNAL #2B6CFF — Noto Sans / Montserrat / Playfair Display.</sub>
+  <a href="https://fadeddarts.github.io/portfolio/">PORTFOLIO</a>
+  ·
+  <a href="https://github.com/fadeddarts?tab=repositories">REPOSITORIES</a>
+  ·
+  <a href="https://www.linkedin.com/in/harpuneet-390-singh/">LINKEDIN</a>
+  ·
+  <a href="mailto:harpuneet.singh@torontomu.ca">EMAIL</a>
 </p>

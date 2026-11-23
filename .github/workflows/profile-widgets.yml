@@ -1,0 +1,62 @@
+name: Profile Widgets
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-widgets
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate 3D isometric contribution cityscape
+        uses: yoshi389111/github-profile-3d-contrib@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+          SETTING_JSON: .github/profile-3d-contrib/config.json
+
+      - name: Copy 3D cityscape into assets/
+        run: |
+          mkdir -p assets
+          if [ -f profile-3d-contrib/profile-customize.svg ]; then
+            cp profile-3d-contrib/profile-customize.svg assets/profile-3d-contrib.svg
+          elif [ -f profile-3d-contrib/profile-gitblock.svg ]; then
+            cp profile-3d-contrib/profile-gitblock.svg assets/profile-3d-contrib.svg
+          else
+            first=$(find profile-3d-contrib -name '*.svg' | head -n 1)
+            cp "$first" assets/profile-3d-contrib.svg
+          fi
+          ls -la assets/profile-3d-contrib.svg profile-3d-contrib/
+
+      - name: Generate animated snake contribution grid
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            assets/github-contribution-grid-snake.svg?palette=github-dark&color_snake=#FFD000&color_dots=#161618,#3D3300,#7A6600,#B89900,#FFD000
+
+      - name: Commit widget assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/profile-3d-contrib.svg assets/github-contribution-grid-snake.svg profile-3d-contrib/ || true
+          if git diff --staged --quiet; then
+            echo "No widget changes"
+          else
+            git commit -m "chore: refresh profile widgets [skip ci]"
+            git push
+          fi
